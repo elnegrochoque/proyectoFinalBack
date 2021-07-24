@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from "cors";
 import path from 'path';
 import './database'
+import personasRoutes from './routes/personas.routes';
 //creo una instancia de express
 const app = express();
 
@@ -22,7 +23,4 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'../public')));
 
 //crear ruta
-app.get('/', (req,res)=>{
-    res.send("Hola desde del backend")
-
-})
+app.use('/api/personas',personasRoutes);
