@@ -1,13 +1,14 @@
 import { Router } from "express";
-import personasCtrl from "../controllers/personas.controllers";
+import evaluacionesCtrl from "../controllers/evaluaciones.controllers";
+
 // creo una instancia del router
 
 const router = Router();
 
 //crear las rutas
 
-router.route("/personas")
-    .get(personasCtrl.getPrueba);
+router.route("/evaluaciones")
+    .get(evaluacionesCtrl.getPrueba);
     
     
 export default router;

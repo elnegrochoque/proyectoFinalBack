@@ -4,6 +4,7 @@ import cors from "cors";
 import path from 'path';
 import './database'
 import personasRoutes from './routes/personas.routes';
+import evaluacionesRoutes from './routes/evaluaciones.routes';
 //creo una instancia de express
 const app = express();
 
@@ -23,4 +24,5 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'../public')));
 
 //crear ruta
-app.use('/api/personas',personasRoutes);
+app.use('/api/sistemadeevaluaciones',personasRoutes);
+app.use('/api/sistemadeevaluaciones',evaluacionesRoutes);

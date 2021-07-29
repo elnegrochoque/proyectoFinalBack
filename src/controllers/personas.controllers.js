@@ -2,7 +2,7 @@
 
 const personasCtrl = {};
 personasCtrl.getPrueba=(req,res)=>{ 
-    res.send('Prueba desde el controlador');
+    res.send('Prueba desde el controlador personas');
 }
 
 export default personasCtrl;
