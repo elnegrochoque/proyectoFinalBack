@@ -1,4 +1,4 @@
-import moongose, { Schema } from moongose;
+import mongoose, { Schema } from "mongoose"
 
 const personaSchema = new Schema({
     tipo: {
@@ -38,5 +38,5 @@ const personaSchema = new Schema({
     }
 });
 
-const Persona = moongose.model('persona', personaSchema);
+const Persona = mongoose.model('persona', personaSchema);
 export default Persona

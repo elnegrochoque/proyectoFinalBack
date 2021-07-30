@@ -7,7 +7,8 @@ const router = Router();
 //crear las rutas
 
 router.route("/personas")
-    .get(personasCtrl.getPrueba);
+    .get(personasCtrl.getPrueba)
+    .post(personasCtrl.crearPersona);
     
     
 export default router;

@@ -8,7 +8,8 @@ const router = Router();
 //crear las rutas
 
 router.route("/evaluaciones")
-    .get(evaluacionesCtrl.getPrueba);
+    .get(evaluacionesCtrl.getPrueba)
+    .post(evaluacionesCtrl.crearEvaluacion);
     
     
 export default router;
