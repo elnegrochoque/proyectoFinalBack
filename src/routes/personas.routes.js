@@ -7,7 +7,7 @@ const router = Router();
 //crear las rutas
 
 router.route("/personas")
-    .get(personasCtrl.getPrueba)
+    .get(personasCtrl.getListaPersonas)
     .post(personasCtrl.crearPersona);
     
     

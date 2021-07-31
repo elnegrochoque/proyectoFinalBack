@@ -1,8 +1,15 @@
 // creo el objeto vacio con la logica del backend
 import Persona from "../models/persona";
 const personasCtrl = {};
-personasCtrl.getPrueba = (req, res) => {
-    res.send('Prueba desde el controlador personas');
+personasCtrl.getListaPersonas = async (req, res) => {try {
+    // obtener un areglo con las noticias
+    const arregloPersonas = await Persona.find();
+    res.status(200).json(arregloPersonas);
+} catch (error) {
+    console.log(error)
+    res.status(500).json({
+        mensaje: "error al obtener las noticias"
+    })}
 }
 personasCtrl.crearPersona = async (req, res) => {
     console.log(req.body);
