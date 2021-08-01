@@ -12,11 +12,9 @@ personasCtrl.getListaPersonas = async (req, res) => {try {
     })}
 }
 personasCtrl.crearPersona = async (req, res) => {
-    console.log(req.body);
-    res.send('desde crear persona')
+
     try {
         const {
-
             nombrePersona,
             tipo,
             usuarioPersona,
@@ -50,5 +48,49 @@ personasCtrl.crearPersona = async (req, res) => {
         // enviar codigo de error
     }
 }
+personasCtrl.obtenerPersona = async (req, res) => {
+    try {
 
+        console.log(req.params.id)
+        const personaBuscada = await Persona.findById(req.params.id)
+
+        res.status(200).json(personaBuscada)
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            mensaje: "error al obtener la noticia"
+        })
+    }
+
+}
+
+personasCtrl.editarPersona = async (req, res) => {
+    try {
+        console.log(req.body)
+        await Persona.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje:"El usuario fue modificado"
+        })
+    } catch (error) {
+    console.log(error)
+    res.status(404).json({
+        mensaje: "error al editar el usuario"
+    })
+}
+}
+personasCtrl.eliminarPersona = async (req, res) => {
+    try {
+        console.log(req.params.id)
+        await Persona.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            mensaje: "el producto fue eliminado"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            mensaje: "error eliminar la noticia"
+        })
+    }
+
+}
 export default personasCtrl;
