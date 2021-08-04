@@ -19,11 +19,27 @@ evaluacionesCtrl.crearEvaluacion = async (req, res) => {
     res.send('desde crear evaluacion')
     try {
         const {
-            nombreEvaluacion
+            nombreEvaluacion,
+            materiaEvaluacion,
+            fechaInicioEvaluacion,
+            horaInicioEvaluacion,
+            fechaFinEvaluacion,
+            horaFinEvaluacion,
+            mezclarPreguntasEvaluacion,
+            libreNavegacionEvaluacion,
+            cantidadPreguntasEvaluacion
         } = req.body
         //crear el nuevo objeto
         const evaluacionNuevo = new Evaluacion({
-            nombreEvaluacion
+            nombreEvaluacion,
+            materiaEvaluacion,
+            fechaInicioEvaluacion,
+            horaInicioEvaluacion,
+            fechaFinEvaluacion,
+            horaFinEvaluacion,
+            mezclarPreguntasEvaluacion,
+            libreNavegacionEvaluacion,
+            cantidadPreguntasEvaluacion
         });
         await evaluacionNuevo.save();
         res.status(201).json({
