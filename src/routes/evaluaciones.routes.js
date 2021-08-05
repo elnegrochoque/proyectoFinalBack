@@ -11,5 +11,9 @@ router.route("/evaluaciones")
     .get(evaluacionesCtrl.listarEvaluaciones)
     .post(evaluacionesCtrl.crearEvaluacion);
     
-    
+router.route("/evaluaciones/:id")
+.get(evaluacionesCtrl.obtenerEvaluacion)
+.delete(evaluacionesCtrl.eliminarEvaluacion)
+router.route("/evaluaciones/profesor/:id")
+.get(evaluacionesCtrl.listarEvaluacionesProfesor)
 export default router;
