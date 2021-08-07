@@ -98,4 +98,18 @@ evaluacionesCtrl.eliminarEvaluacion = async (req, res) => {
     }
 
 }
+evaluacionesCtrl.editarEvaluacion = async (req, res) => {
+    try {
+        console.log(req.body)
+        await Evaluacion.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje:"La evaluacion fue modificado"
+        })
+    } catch (error) {
+    console.log(error)
+    res.status(404).json({
+        mensaje: "error al editar el usuario"
+    })
+}
+}
 export default evaluacionesCtrl;

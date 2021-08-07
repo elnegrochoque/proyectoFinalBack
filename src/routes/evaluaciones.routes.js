@@ -14,6 +14,7 @@ router.route("/evaluaciones")
 router.route("/evaluaciones/:id")
 .get(evaluacionesCtrl.obtenerEvaluacion)
 .delete(evaluacionesCtrl.eliminarEvaluacion)
+.put(evaluacionesCtrl.editarEvaluacion)
 router.route("/evaluaciones/profesor/:id")
 .get(evaluacionesCtrl.listarEvaluacionesProfesor)
 export default router;
