@@ -12,4 +12,6 @@ router.route("/preguntas")
 
 router.route("/preguntas/:id")
     .get(preguntasCtrl.listarPreguntasEvaluacion)
+    .delete(preguntasCtrl.eliminarPregunta)
+    .put(preguntasCtrl.editarPregunta)
 export default router;

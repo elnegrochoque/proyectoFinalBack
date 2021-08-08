@@ -83,12 +83,12 @@ personasCtrl.eliminarPersona = async (req, res) => {
         console.log(req.params.id)
         await Persona.findByIdAndDelete(req.params.id)
         res.status(200).json({
-            mensaje: "el producto fue eliminado"
+            mensaje: "el usuario fue eliminado"
         })
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            mensaje: "error eliminar la noticia"
+            mensaje: "error eliminar el usuario"
         })
     }
 

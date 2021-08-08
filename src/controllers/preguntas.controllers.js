@@ -67,4 +67,33 @@ preguntasCtrl.listarPreguntasEvaluacion = async (req, res) => {
     }
 
 }
+preguntasCtrl.eliminarPregunta = async (req, res) => {
+    try {
+        console.log(req.params.id)
+        await Pregunta.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            mensaje: "la pregunta fue eliminada"
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            mensaje: "error al eliminar la pregunta"
+        })
+    }
+
+}
+preguntasCtrl.editarPregunta = async (req, res) => {
+    try {
+        console.log(req.body)
+        await Pregunta.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje:"La pregunta fue modificada"
+        })
+    } catch (error) {
+    console.log(error)
+    res.status(404).json({
+        mensaje: "error al editar la pregunta"
+    })
+}
+}
 export default preguntasCtrl;

@@ -22,16 +22,16 @@ const preguntaSchema = new Schema({
         type: String
     },
     opcion1CorrectaPregunta:{
-        type: String
+        type: Boolean
     },
     opcion2CorrectaPregunta:{
-        type: String
+        type: Boolean
     },
     opcion3CorrectaPregunta:{
-        type: String
+        type: Boolean
     },
     opcion4CorrectaPregunta:{
-        type: String
+        type: Boolean
     }
 });
 
