@@ -5,32 +5,32 @@ const preguntaSchema = new Schema({
         type: String,
         required: true
     },
-    enunciadoPregunta:{
+    enunciadoPregunta: {
         type: String
     },
-    
-    opcion1Pregunta:{
+
+    opcion1Pregunta: {
         type: String
     },
-    opcion2Pregunta:{
+    opcion2Pregunta: {
         type: String
     },
-    opcion3Pregunta:{
+    opcion3Pregunta: {
         type: String
     },
-    opcion4Pregunta:{
+    opcion4Pregunta: {
         type: String
     },
-    opcion1CorrectaPregunta:{
+    opcion1CorrectaPregunta: {
         type: Boolean
     },
-    opcion2CorrectaPregunta:{
+    opcion2CorrectaPregunta: {
         type: Boolean
     },
-    opcion3CorrectaPregunta:{
+    opcion3CorrectaPregunta: {
         type: Boolean
     },
-    opcion4CorrectaPregunta:{
+    opcion4CorrectaPregunta: {
         type: Boolean
     }
 });

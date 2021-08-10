@@ -40,6 +40,12 @@ const evaluacionSchema = new Schema({
     cantidadPreguntasEvaluacion: {
         type: Number,
         required: true
+    },
+    fechaYHoraInicioEvaluacion:{
+        type:Date
+    },
+    fechaYHoraFinEvaluacion:{
+        type:Date
     }
 });
 

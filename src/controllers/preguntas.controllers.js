@@ -67,6 +67,18 @@ preguntasCtrl.listarPreguntasEvaluacion = async (req, res) => {
     }
 
 }
+preguntasCtrl.obtenerUnaPregunta = async (req, res) => {
+    try {
+        const preguntasBuscadas = await Pregunta.findById(req.params.id)
+        res.status(200).json(preguntasBuscadas)
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            mensaje: "error al obtener las Preguntas"
+        })
+    }
+
+}
 preguntasCtrl.eliminarPregunta = async (req, res) => {
     try {
         console.log(req.params.id)
