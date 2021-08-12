@@ -12,6 +12,7 @@ router.route("/respuestas")
 
 router.route("/respuestas/:idRespuesta")
     .delete(respuestasCtrl.eliminarRespuesta)
+    .put(respuestasCtrl.editarRespuesta)
 router.route("/respuestas/:idAlumno/:idEvaluacion/:idNumeroPregunta")
     .get(respuestasCtrl.obtenerPreguntasEvaluacion)
 export default router;

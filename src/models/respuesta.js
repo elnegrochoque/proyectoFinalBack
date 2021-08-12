@@ -28,6 +28,8 @@ const respuestaSchema = new Schema({
     },
     opcion4CorrectaRespuesta: {
         type: Boolean
+    }, momentoInicioDeEvaluacionAlumno:{
+        type: Date
     }
 });
 

@@ -30,7 +30,10 @@ evaluacionesCtrl.crearEvaluacion = async (req, res) => {
             libreNavegacionEvaluacion,
             cantidadPreguntasEvaluacion,
             fechaYHoraInicioEvaluacion,
-            fechaYHoraFinEvaluacion
+            fechaYHoraFinEvaluacion,
+            duracionEvaluacionMilisegundos,
+            duracionEvaluacion
+
         } = req.body
         //crear el nuevo objeto
         const evaluacionNuevo = new Evaluacion({
@@ -45,7 +48,10 @@ evaluacionesCtrl.crearEvaluacion = async (req, res) => {
             libreNavegacionEvaluacion,
             cantidadPreguntasEvaluacion,
             fechaYHoraInicioEvaluacion,
-            fechaYHoraFinEvaluacion
+            fechaYHoraFinEvaluacion,
+            duracionEvaluacionMilisegundos,
+            duracionEvaluacion
+
         });
         await evaluacionNuevo.save();
         const evaluacionNuevaID = await Evaluacion.find({ "nombreEvaluacion": nombreEvaluacion }, { "_id": 1 })
@@ -141,11 +147,19 @@ evaluacionesCtrl.obtenerEvaluacionPreguntasAlumno = async (req, res) => {
         const evaluacionBuscada = await Evaluacion.find({ "_id": req.params.id })
         if (ahora.getTime() > evaluacionBuscada[0].fechaYHoraInicioEvaluacion.getTime() &&
             ahora.getTime() < evaluacionBuscada[0].fechaYHoraFinEvaluacion.getTime()) {
-            preguntasBuscadas.sort(() => Math.random() > 0.5 ? 1 : -1);
-
-            for (let index = 0; index < evaluacionBuscada[0].cantidadPreguntasEvaluacion; index++) {
-                evaluacionBuscada.push(preguntasBuscadas[index])
-            }   
+            if (evaluacionBuscada[0].mezclarPreguntasEvaluacion===true) {
+                preguntasBuscadas.sort(() => Math.random() > 0.5 ? 1 : -1);
+            }
+            console.log(preguntasBuscadas.length)
+            if (preguntasBuscadas.length<evaluacionBuscada[0].cantidadPreguntasEvaluacion) {
+                for (let index = 0; index < preguntasBuscadas.length; index++) {
+                    evaluacionBuscada.push(preguntasBuscadas[index])
+                }
+            } else {
+                for (let index = 0; index < evaluacionBuscada[0].cantidadPreguntasEvaluacion; index++) {
+                    evaluacionBuscada.push(preguntasBuscadas[index])
+                }    
+            }
             res.status(200).json(evaluacionBuscada)
         } else {
             res.status(200).json(false)

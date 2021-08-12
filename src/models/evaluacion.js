@@ -46,6 +46,12 @@ const evaluacionSchema = new Schema({
     },
     fechaYHoraFinEvaluacion:{
         type:Date
+    },
+    duracionEvaluacionMilisegundos:{
+        type:Number
+    },
+    duracionEvaluacion:{
+        type:String
     }
 });
 
