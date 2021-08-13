@@ -108,4 +108,5 @@ preguntasCtrl.editarPregunta = async (req, res) => {
     })
 }
 }
+
 export default preguntasCtrl;
