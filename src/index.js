@@ -5,6 +5,9 @@ import path from 'path';
 import './database'
 import personasRoutes from './routes/personas.routes';
 import evaluacionesRoutes from './routes/evaluaciones.routes';
+import preguntasRoutes from './routes/preguntas.routes'
+import respuestasRoutes from './routes/respuestas.routes'
+import resultadoRoutes from './routes/resultados.routes'
 //creo una instancia de express
 const app = express();
 
@@ -26,3 +29,6 @@ app.use(express.static(path.join(__dirname,'../public')));
 //crear ruta
 app.use('/api/sistemadeevaluaciones',personasRoutes);
 app.use('/api/sistemadeevaluaciones',evaluacionesRoutes);
+app.use('/api/sistemadeevaluaciones',preguntasRoutes);
+app.use('/api/sistemadeevaluaciones',respuestasRoutes);
+app.use('/api/sistemadeevaluaciones',resultadoRoutes)
