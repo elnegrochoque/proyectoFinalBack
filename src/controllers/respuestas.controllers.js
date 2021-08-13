@@ -28,7 +28,8 @@ respuestasCtrl.crearRespuesta = async (req, res) => {
             opcion2CorrectaRespuesta,
             opcion3CorrectaRespuesta,
             opcion4CorrectaRespuesta,
-            momentoInicioDeEvaluacionAlumno
+            momentoInicioDeEvaluacionAlumno,
+            IDResultado
         } = req.body
         //crear el nuevo objeto
         const respuestaNueva = new Respuesta({
@@ -40,7 +41,8 @@ respuestasCtrl.crearRespuesta = async (req, res) => {
             opcion2CorrectaRespuesta,
             opcion3CorrectaRespuesta,
             opcion4CorrectaRespuesta,
-            momentoInicioDeEvaluacionAlumno
+            momentoInicioDeEvaluacionAlumno,
+            IDResultado
         });
         await respuestaNueva.save();
         res.status(201).json({
@@ -59,13 +61,14 @@ respuestasCtrl.obtenerPreguntasEvaluacion = async (req, res) => {
         // obtener un areglo con todas las preguntas
         const arregloPreguntas = await Respuesta.find({
             "IDEvaluacion": req.params.idEvaluacion,
-        "IDAlumno":req.params.idAlumno,"numeroPregunta":req.params.idNumeroPregunta});
+            "IDAlumno": req.params.idAlumno, "numeroPregunta": req.params.idNumeroPregunta
+        });
         console.log(arregloPreguntas.length)
-        console.log(arregloPreguntas[arregloPreguntas.length-1])
-        const arregloUltimaPregunta=[]
-        arregloUltimaPregunta.push(arregloPreguntas[arregloPreguntas.length-1])
+        console.log(arregloPreguntas[arregloPreguntas.length - 1])
+        const arregloUltimaPregunta = []
+        arregloUltimaPregunta.push(arregloPreguntas[arregloPreguntas.length - 1])
         res.status(200).json(arregloUltimaPregunta);
-        } catch (error) {
+    } catch (error) {
         console.log(error)
         res.status(500).json({
             mensaje: "error al obtener las preguntas"
@@ -78,14 +81,28 @@ respuestasCtrl.editarRespuesta = async (req, res) => {
         console.log(req.body)
         await Respuesta.findByIdAndUpdate(req.params.idRespuesta, req.body);
         res.status(200).json({
-            mensaje:"Respuesta Modificada"
+            mensaje: "Respuesta Modificada"
         })
     } catch (error) {
-    console.log(error)
-    res.status(404).json({
-        mensaje: "error al responder"
-    })
-}
+        console.log(error)
+        res.status(404).json({
+            mensaje: "error al responder"
+        })
+    }
 }
 
+respuestasCtrl.obtenerRespuestaResultado = async (req, res) => {
+    try {
+
+        const respuestasBuscadas = await Respuesta.find({ "IDResultado": req.params.idResultado });
+
+        res.status(200).json(respuestasBuscadas)
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            mensaje: "error al obtener la noticia"
+        })
+    }
+
+}
 export default respuestasCtrl;

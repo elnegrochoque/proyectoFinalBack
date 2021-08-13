@@ -30,6 +30,10 @@ const respuestaSchema = new Schema({
         type: Boolean
     }, momentoInicioDeEvaluacionAlumno:{
         type: Date
+    },
+    IDResultado:{
+        type:String
+        
     }
 });
 

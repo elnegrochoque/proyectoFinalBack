@@ -15,4 +15,8 @@ router.route("/respuestas/:idRespuesta")
     .put(respuestasCtrl.editarRespuesta)
 router.route("/respuestas/:idAlumno/:idEvaluacion/:idNumeroPregunta")
     .get(respuestasCtrl.obtenerPreguntasEvaluacion)
+
+router.route("/respuestas/resultados/:idResultado")
+    .get(respuestasCtrl.obtenerRespuestaResultado)
+
 export default router;
