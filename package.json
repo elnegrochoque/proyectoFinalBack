@@ -14,10 +14,18 @@
     "babel-preset-env": "^1.7.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.13.3",
+    "mongoose": "^5.13.7",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elnegrochoque/backend-proyecto4to.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elnegrochoque/backend-proyecto4to/issues"
+  },
+  "homepage": "https://github.com/elnegrochoque/backend-proyecto4to#readme"
 }
