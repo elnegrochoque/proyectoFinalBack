@@ -1,23 +1,24 @@
-import mongoose, { Schema } from "mongoose"
+import mongoose, { Schema } from "mongoose";
 
 const resultadoSchema = new Schema({
-    IDEvaluacion: {
-        type: String,
-        required: true
-    },
-    IDAlumno: {
-        type: String,
-        required: true
-    },
-    FechaEvaluacion: {
-        type: Date,
-        required: true
-    },
-    NotaEvaluacion: {
-        type: Number,
-        required: true
-    }     
+  IDEvaluacion: {
+    type: String,
+    required: true,
+  },
+  IDAlumno: {
+    type: String,
+    required: true,
+  },
+  FechaEvaluacion: {
+    type: Date,
+    required: true,
+  },
+  NotaEvaluacion: {
+    type: Number,
+    required: true,
+  },
+  Foto: { type: String },
 });
 
-const Resultado = mongoose.model('resultado', resultadoSchema);
-export default Resultado
+const Resultado = mongoose.model("resultado", resultadoSchema);
+export default Resultado;
