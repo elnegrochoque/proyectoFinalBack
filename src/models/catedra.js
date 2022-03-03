@@ -7,11 +7,9 @@ const catedraSchema = new Schema({
   },
   materiaCatedra: {
     type: String,
-    required: true,
   },
   idProfesor: {
     type: String,
-    required: true,
   }
 });
 

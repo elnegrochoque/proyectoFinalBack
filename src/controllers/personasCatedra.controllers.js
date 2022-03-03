@@ -15,12 +15,10 @@ personasCatedraCtrl.getListarPersonas = async (req, res) => {
 };
 personasCatedraCtrl.postAgregarPersonasCatedra = async (req, res) => {
   try {
-    const { nombreCatedra, idCatedra, nombrePersona, idPersona } = req.body;
+    const { idCatedra, idPersona } = req.body;
     //crear el nuevo objeto
     const personaNuevaCatedra = new PersonasCatedra({
-      nombreCatedra,
       idCatedra,
-      nombrePersona,
       idPersona,
     });
     await personaNuevaCatedra.save();
@@ -46,7 +44,26 @@ personasCatedraCtrl.getObtenerPersonaCatedra = async (req, res) => {
     });
   }
 };
-
+personasCatedraCtrl.getObteneridPersonaidCatedra = async (req, res) => {
+  try {
+    console.log(req.body);
+    const personaBuscada = await PersonasCatedra.find({
+      idPersona: req.body.idPersona,
+      idCatedra: req.body.idCatedra,
+    });
+    console.log(personaBuscada.length);
+    if (personaBuscada.length > 0) {
+      res.status(200).json({ existe: true });
+    } else {
+      res.status(200).json({ existe: false });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "error al obtener la persona",
+    });
+  }
+};
 personasCatedraCtrl.putEditarPersonaCatedra = async (req, res) => {
   try {
     console.log(req.body);
@@ -73,6 +90,38 @@ personasCatedraCtrl.deleteEliminarPersonaCatedra = async (req, res) => {
     console.log(error);
     res.status(500).json({
       mensaje: "error al eliminar la catedra",
+    });
+  }
+};
+personasCatedraCtrl.deleteidPersonaidCatedra = async (req, res) => {
+  console.log(req.body);
+  try {
+    const cantidad = await PersonasCatedra.deleteMany({
+      idCatedra: req.body.idCatedra,
+      idPersona: req.body.idPersona,
+    });
+    res.status(200).json({
+      mensaje: cantidad,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      mensaje: "error al eliminar la catedra",
+    });
+  }
+};
+personasCatedraCtrl.getObtenerPersonaConidCatedra = async (req, res) => {
+  try {
+    console.log(req.body);
+    const personaBuscada = await PersonasCatedra.find({
+      idCatedra: req.body.idCatedra,
+    });
+
+    res.status(200).json(personaBuscada);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "error al obtener la persona",
     });
   }
 };

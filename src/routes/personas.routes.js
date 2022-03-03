@@ -6,11 +6,14 @@ const router = Router();
 
 //crear las rutas
 
-router.route("/personas")
-    .get(personasCtrl.getListaPersonas)
-    .post(personasCtrl.crearPersona);
-router.route("/personas/:id")
-    .delete(personasCtrl.eliminarPersona)
-    .get(personasCtrl.obtenerPersona)
-    .put(personasCtrl.editarPersona);
+router
+  .route("/personas")
+  .get(personasCtrl.getListaPersonas)
+  .post(personasCtrl.crearPersona);
+router
+  .route("/personas/:id")
+  .delete(personasCtrl.eliminarPersona)
+  .get(personasCtrl.obtenerPersona)
+  .put(personasCtrl.editarPersona);
+router.route("/personasUI/:UIPersona").get(personasCtrl.obtenerPersonaUI);
 export default router;
