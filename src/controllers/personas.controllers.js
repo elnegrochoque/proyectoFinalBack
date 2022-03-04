@@ -35,6 +35,8 @@ personasCtrl.crearPersona = async (req, res) => {
       DNIPersona,
       emailPersona,
       apellidoPersona,
+      estadoPersona: "false",
+      ultimaConexion: 0,
     });
     await personaNuevo.save();
     res.status(201).json({
@@ -105,6 +107,30 @@ personasCtrl.obtenerPersonaUI = async (req, res) => {
     console.log(error);
     res.status(404).json({
       mensaje: "error al obtener la Persona",
+    });
+  }
+};
+personasCtrl.getEstadoPersona = async (req, res) => {
+  try {
+    const personas = await Persona.findById(req.params.idPersona);
+    console.log(personas.estadoPersona);
+    res.status(200).json({ conectado: personas.estadoPersona });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      mensaje: "error de conexion",
+    });
+  }
+};
+personasCtrl.getConexionPersona = async (req, res) => {
+  try {
+    const personas = await Persona.findById(req.params.idPersona);
+    console.log(personas.ultimaConexion);
+    res.status(200).json({ conectado: personas.ultimaConexion });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      mensaje: "error de conexion",
     });
   }
 };

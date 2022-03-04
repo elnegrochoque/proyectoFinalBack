@@ -35,6 +35,12 @@ const personaSchema = new Schema({
     apellidoPersona: {
         type: String,
         required: true
+    },
+    estadoPersona: {
+        type: String
+    },
+    ultimaConexion: {
+        type: Number
     }
 });
 

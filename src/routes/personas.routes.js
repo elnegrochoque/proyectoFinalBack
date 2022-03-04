@@ -16,4 +16,7 @@ router
   .get(personasCtrl.obtenerPersona)
   .put(personasCtrl.editarPersona);
 router.route("/personasUI/:UIPersona").get(personasCtrl.obtenerPersonaUI);
+router.route("/estadopersona/:idPersona").get(personasCtrl.getEstadoPersona);
+
+router.route("/conexionpersona/:idPersona").get(personasCtrl.getConexionPersona);
 export default router;
