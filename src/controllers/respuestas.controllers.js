@@ -29,7 +29,8 @@ respuestasCtrl.crearRespuesta = async (req, res) => {
             opcion3CorrectaRespuesta,
             opcion4CorrectaRespuesta,
             momentoInicioDeEvaluacionAlumno,
-            IDResultado
+            IDResultado,
+            desarrollo
         } = req.body
         //crear el nuevo objeto
         const respuestaNueva = new Respuesta({
@@ -42,7 +43,8 @@ respuestasCtrl.crearRespuesta = async (req, res) => {
             opcion3CorrectaRespuesta,
             opcion4CorrectaRespuesta,
             momentoInicioDeEvaluacionAlumno,
-            IDResultado
+            IDResultado,
+            desarrollo
         });
         await respuestaNueva.save();
         res.status(201).json({
