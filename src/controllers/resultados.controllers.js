@@ -3,7 +3,6 @@ import Persona from "../models/persona";
 const resultadosCtrl = {};
 
 resultadosCtrl.crearResultado = async (req, res) => {
-    console.log("requesttttttt",req.body)
   try {
     const { IDEvaluacion, IDAlumno, FechaEvaluacion, NotaEvaluacion, Foto } =
       req.body;
@@ -13,7 +12,7 @@ resultadosCtrl.crearResultado = async (req, res) => {
       IDAlumno,
       FechaEvaluacion,
       NotaEvaluacion,
-      Foto
+      Foto,
     });
     await resultadoNuevo.save();
 
@@ -70,6 +69,21 @@ resultadosCtrl.obtenerResultadosEvaluacion = async (req, res) => {
     console.log(error);
     res.status(404).json({
       mensaje: "error al buscar las evaluaciones",
+    });
+  }
+};
+
+resultadosCtrl.getResultadoIdAlumno = async (req, res) => {
+  try {
+    const resultadosBuscados = await Resultado.find({
+      IDAlumno: req.params.idAlumno,
+    });
+
+    res.status(200).json(resultadosBuscados);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({
+      mensaje: "error al obtener el resultado",
     });
   }
 };
