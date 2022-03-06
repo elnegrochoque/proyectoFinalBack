@@ -16,7 +16,7 @@ evaluacionesCtrl.listarEvaluaciones = async (req, res) => {
     }
 }
 evaluacionesCtrl.crearEvaluacion = async (req, res) => {
-    console.log(req.body);
+ 
     try {
         const {
             IDProfesor,
@@ -95,7 +95,6 @@ evaluacionesCtrl.listarEvaluacionesProfesor = async (req, res) => {
 }
 evaluacionesCtrl.eliminarEvaluacion = async (req, res) => {
     try {
-        console.log(req.params.id)
         await Evaluacion.findByIdAndDelete(req.params.id)
         res.status(200).json({
             mensaje: "el producto fue eliminado"
@@ -110,7 +109,6 @@ evaluacionesCtrl.eliminarEvaluacion = async (req, res) => {
 }
 evaluacionesCtrl.editarEvaluacion = async (req, res) => {
     try {
-        console.log(req.body)
         await Evaluacion.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({
             mensaje: "La evaluacion fue modificado"
@@ -150,7 +148,6 @@ evaluacionesCtrl.obtenerEvaluacionPreguntasAlumno = async (req, res) => {
             if (evaluacionBuscada[0].mezclarPreguntasEvaluacion===true) {
                 preguntasBuscadas.sort(() => Math.random() > 0.5 ? 1 : -1);
             }
-            console.log(preguntasBuscadas.length)
             if (preguntasBuscadas.length<evaluacionBuscada[0].cantidadPreguntasEvaluacion) {
                 for (let index = 0; index < preguntasBuscadas.length; index++) {
                     evaluacionBuscada.push(preguntasBuscadas[index])

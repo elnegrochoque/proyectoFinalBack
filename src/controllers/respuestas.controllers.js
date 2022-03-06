@@ -3,7 +3,6 @@ import Respuesta from "../models/respuesta"
 const respuestasCtrl = {};
 respuestasCtrl.eliminarRespuesta = async (req, res) => {
     try {
-        console.log(req.params.id)
         await Respuesta.findByIdAndDelete(req.params.idRespuesta)
         res.status(200).json({
             mensaje: "la respuesta fue eliminada"
@@ -65,8 +64,6 @@ respuestasCtrl.obtenerPreguntasEvaluacion = async (req, res) => {
             "IDEvaluacion": req.params.idEvaluacion,
             "IDAlumno": req.params.idAlumno, "numeroPregunta": req.params.idNumeroPregunta
         });
-        console.log(arregloPreguntas.length)
-        console.log(arregloPreguntas[arregloPreguntas.length - 1])
         const arregloUltimaPregunta = []
         arregloUltimaPregunta.push(arregloPreguntas[arregloPreguntas.length - 1])
         res.status(200).json(arregloUltimaPregunta);
@@ -80,7 +77,6 @@ respuestasCtrl.obtenerPreguntasEvaluacion = async (req, res) => {
 
 respuestasCtrl.editarRespuesta = async (req, res) => {
     try {
-        console.log(req.body)
         await Respuesta.findByIdAndUpdate(req.params.idRespuesta, req.body);
         res.status(200).json({
             mensaje: "Respuesta Modificada"

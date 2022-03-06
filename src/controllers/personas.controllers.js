@@ -52,7 +52,6 @@ personasCtrl.crearPersona = async (req, res) => {
 };
 personasCtrl.obtenerPersona = async (req, res) => {
   try {
-    console.log(req.params.id);
     const personaBuscada = await Persona.findById(req.params.id);
 
     res.status(200).json(personaBuscada);
@@ -66,7 +65,6 @@ personasCtrl.obtenerPersona = async (req, res) => {
 
 personasCtrl.editarPersona = async (req, res) => {
   try {
-    console.log(req.body);
     await Persona.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).json({
       mensaje: "El usuario fue modificado",
@@ -80,7 +78,6 @@ personasCtrl.editarPersona = async (req, res) => {
 };
 personasCtrl.eliminarPersona = async (req, res) => {
   try {
-    console.log(req.params.id);
     await Persona.findByIdAndDelete(req.params.id);
     res.status(200).json({
       mensaje: "el usuario fue eliminado",
@@ -97,7 +94,6 @@ personasCtrl.obtenerPersonaUI = async (req, res) => {
     const personaBuscada = await Persona.find({
       UIPersona: req.params.UIPersona,
     });
-    console.log(personaBuscada.length);
     if (personaBuscada.length == 0) {
       res.status(200).json("no existe");
     } else {
@@ -113,7 +109,7 @@ personasCtrl.obtenerPersonaUI = async (req, res) => {
 personasCtrl.getEstadoPersona = async (req, res) => {
   try {
     const personas = await Persona.findById(req.params.idPersona);
-    console.log(personas.estadoPersona);
+
     res.status(200).json({ conectado: personas.estadoPersona });
   } catch (error) {
     console.log(error);
@@ -125,7 +121,7 @@ personasCtrl.getEstadoPersona = async (req, res) => {
 personasCtrl.getConexionPersona = async (req, res) => {
   try {
     const personas = await Persona.findById(req.params.idPersona);
-    console.log(personas.ultimaConexion);
+
     res.status(200).json({ conectado: personas.ultimaConexion });
   } catch (error) {
     console.log(error);

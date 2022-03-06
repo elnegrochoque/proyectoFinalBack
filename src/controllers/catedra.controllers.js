@@ -48,7 +48,6 @@ catedraCtrl.getObtenerCatedra = async (req, res) => {
 
 catedraCtrl.putEditarCatedra = async (req, res) => {
   try {
-    console.log(req.body);
     await Catedra.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).json({
       mensaje: "La catedra fue modificada",
@@ -62,7 +61,6 @@ catedraCtrl.putEditarCatedra = async (req, res) => {
 };
 catedraCtrl.deleteEliminarCatedra = async (req, res) => {
   try {
-    console.log(req.params.id);
     await Catedra.findByIdAndDelete(req.params.id);
     res.status(200).json({
       mensaje: "La catedra fue eliminada",

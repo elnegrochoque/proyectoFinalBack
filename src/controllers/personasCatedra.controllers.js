@@ -46,12 +46,10 @@ personasCatedraCtrl.getObtenerPersonaCatedra = async (req, res) => {
 };
 personasCatedraCtrl.getObteneridPersonaidCatedra = async (req, res) => {
   try {
-    console.log(req.body);
     const personaBuscada = await PersonasCatedra.find({
       idPersona: req.body.idPersona,
       idCatedra: req.body.idCatedra,
     });
-    console.log(personaBuscada.length);
     if (personaBuscada.length > 0) {
       res.status(200).json({ existe: true });
     } else {
@@ -66,7 +64,6 @@ personasCatedraCtrl.getObteneridPersonaidCatedra = async (req, res) => {
 };
 personasCatedraCtrl.putEditarPersonaCatedra = async (req, res) => {
   try {
-    console.log(req.body);
     await PersonasCatedra.findByIdAndUpdate(req.params.id, req.body);
     res.status(200).json({
       mensaje: "La catedra fue modificada",
@@ -81,7 +78,6 @@ personasCatedraCtrl.putEditarPersonaCatedra = async (req, res) => {
 
 personasCatedraCtrl.deleteEliminarPersonaCatedra = async (req, res) => {
   try {
-    console.log(req.params.id);
     await PersonasCatedra.findByIdAndDelete(req.params.id);
     res.status(200).json({
       mensaje: "La catedra fue eliminada",
@@ -94,7 +90,7 @@ personasCatedraCtrl.deleteEliminarPersonaCatedra = async (req, res) => {
   }
 };
 personasCatedraCtrl.deleteidPersonaidCatedra = async (req, res) => {
-  console.log(req.body);
+
   try {
     const cantidad = await PersonasCatedra.deleteMany({
       idCatedra: req.body.idCatedra,
@@ -112,7 +108,6 @@ personasCatedraCtrl.deleteidPersonaidCatedra = async (req, res) => {
 };
 personasCatedraCtrl.getObtenerPersonaConidCatedra = async (req, res) => {
   try {
-    console.log(req.body);
     const personaBuscada = await PersonasCatedra.find({
       idCatedra: req.body.idCatedra,
     });
